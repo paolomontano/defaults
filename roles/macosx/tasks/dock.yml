@@ -1,4 +1,3 @@
 ---
-- name: macosx | dock
-  debug:
-    msg: "dock"
+- name: remove all apps from dock
+  command: "dockutil -r all"
