@@ -1,0 +1,7 @@
+---
+- name: enable wifi
+  osx_defaults:
+    domain: com.apple.routined
+    key: RTDefaultsDeviceMetricCurrentReachability
+    type: int
+    value: "{{ enable_wifi }}"

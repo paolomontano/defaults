@@ -1,0 +1,48 @@
+---
+- name: control center modules | visibility | global
+  vars:
+    show: 1
+    hide: 0
+  osx_defaults:
+    domain: com.apple.controlcenter
+    key: "{{ visibility_item.key }}"
+    value: "{{ vars[visibility_item.cond | lower] }}"
+    state: present
+    type: int
+  with_items:
+    - { key: NSStatusItem Visible WiFi, cond: "{{ control_center_wifi }}" }
+    - { key: NSStatusItem Visible Bluetooth, cond: "{{ control_center_bluetooth }}" }
+    - { key: NSStatusItem Visible AirDrop, cond: "{{ control_center_airdrop }}" }
+    - { key: NSStatusItem Visible FocusModes, cond: "{{ control_center_focus }}" }
+    - { key: NSStatusItem Visible StageManager, cond: "{{ control_center_stage_manager }}" }
+    - { key: NSStatusItem Visible ScreenMirroring, cond: "{{ control_center_screen_mirroring }}" }
+    - { key: NSStatusItem Visible Display, cond: "{{ control_center_display_display }}" }
+    - { key: NSStatusItem Visible Sound, cond: "{{ control_center_sound }}" }
+    - { key: NSStatusItem Visible NowPlaying, cond: "{{ control_center_now_playing }}" }
+  loop_control:
+    loop_var: visibility_item
+
+- name: control center modules | visibility | currentHost
+  vars:
+    active: 2
+    show: 18
+    hide: 8
+  osx_defaults:
+    domain: com.apple.controlcenter
+    key: "{{ visibility_currenthost_item.key }}"
+    value: "{{ vars[visibility_currenthost_item.cond | lower] }}"
+    state: present
+    type: "{{ visibility_currenthost_item.type }}"
+    host: currentHost
+  with_items:
+    - { key: WiFi, type: int, cond: "{{ control_center_wifi }}" }
+    - { key: Bluetooth, type: int, cond: "{{ control_center_bluetooth }}" }
+    - { key: AirDrop, type: int, cond: "{{ control_center_airdrop }}" }
+    - { key: FocusModes, type: int, cond: "{{ control_center_focus }}" }
+    - { key: StageManager, type: int, cond: "{{ control_center_stage_manager }}" }
+    - { key: ScreenMirroring, type: int, cond: "{{ control_center_screen_mirroring }}" }
+    - { key: Display, type: int, cond: "{{ control_center_display_display }}" }
+    - { key: Sound, type: int, cond: "{{ control_center_sound }}" }
+    - { key: NowPlaying, type: int, cond: "{{ control_center_now_playing }}" }
+  loop_control:
+    loop_var: visibility_currenthost_item

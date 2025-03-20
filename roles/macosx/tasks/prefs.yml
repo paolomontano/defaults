@@ -1,0 +1,33 @@
+---
+- name: set system preferences
+  include_tasks: "system-preferences/{{ item }}"
+  loop:
+    - connections.yml
+    - appearance.yml
+    - control-center.yml
+    - desktop-dock.yml
+    - spotlight.yml
+    
+    # - battery.yml
+    # - general.yml
+    # - accessibility.yml
+    # - apple-intelligence-siri.yml
+    # - displays.yml
+    # - screen-saver.yml
+
+    # - wallpaper.yml
+    # - notifications.yml
+    # - sound.yml
+    # - focus.yml
+    # - screen-time.yml
+    # - lock-screen.yml
+    # - privacy_security.yml
+    # - touch-id-password.yml
+    # - users-groups.yml
+    # - internet-accounts.yml
+    # - game-center.yml
+    # - icloud.yml
+    # - wallet-apple-pay.yml
+    # - keyboard.yml
+    # - trackpad.yml
+    # - printers-scanners.yml

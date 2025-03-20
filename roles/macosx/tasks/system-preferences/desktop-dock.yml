@@ -1,0 +1,108 @@
+---
+- name: dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ dock_item.key }}"
+    value: "{{ dock_item.value }}"
+    state: present
+    type: "{{ dock_item.type }}"
+  with_items:
+    - { key: tilesize, type: float, value: "{{ desktop_dock_size }}" }
+    - { key: magnification, type: int, value: "{{ desktop_dock_magnification | ternary(1, 0) }}" }
+    - { key: largesize, type: float, value: "{{ desktop_dock_magnification }}" }
+    - { key: orientation, type: string, value: "{{ desktop_dock_position | lower }}" }
+    - { key: mineffect, type: string, value: "{{ desktop_dock_minimize_effect | lower}}" }
+    - { key: AppleActionOnDoubleClick, type: string, value: "{{ desktop_dock_double_click_title }}" }
+    - { key: minimize-to-application, type: int, value: "{{ desktop_dock_minimize_to_app_icon | ternary(1, 0) }}" }
+    - { key: autohide, type: int, value: "{{ desktop_dock_auto_hide_dock | ternary(1, 0) }}" }
+    - { key: launchanim, type: int, value: "{{ desktop_dock_animate_opening_app | ternary(1, 0) }}" }
+    - { key: show-process-indicators, type: int, value: "{{ desktop_dock_show_indicators_app | ternary(1, 0) }}" }
+    - { key: show-recents, type: int, value: "{{ desktop_dock_show_suggested | ternary(1, 0) }}" }
+  loop_control:
+    loop_var: dock_item
+  notify: restart dock
+
+- name: desktop
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ desktop_stage_manager_item.key }}"
+    value: "{{ desktop_stage_manager_item.value | ternary(1, 0) }}"
+  with_items:
+    - { key: StandardHideDesktopIcons, value: "{{ desktop_stage_manager_show_items_desktop }}" }
+    - { key: HideDesktop, value: "{{ desktop_stage_manager_show_items_stage_manager }}" }
+    - { key: EnableStandardClickToShowDesktop, value: "{{ desktop_stage_manager_click_wallpaper_to_reveal }}" }
+  loop_control:
+    loop_var: desktop_stage_manager_item
+  notify: restart dock
+
+- name: stage manager
+  osx_defaults:
+    domain: com.apple.WindowManager
+    key: GloballyEnabled
+    value: "{{ stage_manager_enabled }}"
+    type: bool
+
+- name: stage manager | options
+#  debug:
+#    msg: "{{ stage_manager_item.value | ternary(1, 0) }}"
+  osx_defaults:
+    domain: com.apple.WindowManager
+    key: "{{ stage_manager_item.key }}"
+    value: "{{ stage_manager_item.value | ternary(1, 0) }}"
+    type: int
+  with_items:
+    - { key: AutoHide, value: "{{ stage_manager_show_recent_apps }}" }
+    - { key: AppWindowGroupingBehavior, value: "{{ stage_manager_show_windows_from_app }}" }
+  loop_control:
+    loop_var: stage_manager_item
+
+- name: widgets | show widgets
+  osx_defaults:
+    domain: com.apple.WindowManager
+    key: "{{ show_widget_item.key }}"
+    value: "{{ show_widget_item | ternary(1, 0) }}"
+    type: int
+  with_items:
+    - { key: StandardHideWidgets, value: "{{ widgets_hide_desktop }}" }
+    - { key: StageManagerHideWidgets, value: "{{ widgets_hide_stage_manager }}" }
+  loop_control:
+    loop_var: show_widget_item
+
+- name: widgets | style
+  osx_defaults:
+    domain: com.apple.widgets
+    key: widgetAppearance
+    value: "{{ widgets_style_item.value }}"
+    type: int
+  when: widgets_style == widgets_style_item.cond
+  with_items:
+    - { value: 0, cond: Monochrome }
+    - { value: 1, cond: Full}
+    - { value: 2, cond: Automatic }
+  loop_control:
+    loop_var: widgets_style_item
+
+#- name: windows
+#  osx_defaults:
+#    domain: Apple Global Domain
+#    key: "{{ windows_item.key }}"
+#    value: "{{ windows_item.value }}"
+#  with_items:
+#    - { key: AppleWindowTabbingMode }
+#    - { key: NSCloseAlwaysConfirmsChanges }
+#    - { key: NSQuitAlwaysKeepsWindows }
+
+- name: mission control
+  osx_defaults:
+    domain: "{{ mission_control_item.domain }}"
+    key: "{{ mission_control_item.key }}"
+    value: "{{ mission_control_item.value }}"
+    type: bool
+  with_items:
+    - { domain: com.apple.dock, key: mru-spaces, value: "{{ mission_control_rearrange_spaces }}" }
+    - { domain: Apple Global Domain, key: AppleSpacesSwitchOnActivate, value: "{{ mission_control_switch_app_to_open_space }}" }
+    - { domain: com.apple.dock, key: expose-group-apps, value: "{{ mission_control_group_by_application }}" }
+    - { domain: com.apple.spaces, key: spans-displays, value: "{{ mission_control_displays_have_different_spaces }}" }
+    - { domain: com.apple.dock, key: enterMissionControlByTopWindowDrag, value: "{{ mission_control_drag_windows_to_top_for_mission_control }}" }
+  loop_control:
+    loop_var: mission_control_item

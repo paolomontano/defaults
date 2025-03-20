@@ -1,0 +1,6 @@
+---
+- name: homebrew
+  include_tasks: homebrew.yml
+
+- name: preferences
+  import_tasks: prefs.yml

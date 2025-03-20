@@ -1,0 +1,131 @@
+---
+- name: appearance
+  block:
+    - name: appearance | mode
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleInterfaceStyle
+        state: absent
+      when: appearance_mode is not defined or appearance_mode == "Light"
+
+    - name: appearance | mode
+      osx_defaults:
+        domain: Apple Global Domain
+        key: "{{ appearance_mode_item.key }}"
+        state: present
+        type: "{{ appearance_mode_item.type }}"
+        value: "{{ appearance_mode_item.value }}"
+      when: appearance_mode is defined and appearance_mode != "Light" and appearance_mode == appearance_mode_item.cond
+      with_items:
+        - { key: AppleInterfaceStyle, type: string, value: Dark, cond: Dark }
+        - { key: AppleInterfaceStyle, type: string, value: Dark, cond: Auto }
+        - { key: AppleInterfaceStyleSwitchesAutomatically, type: int, value: 1, cond: Auto }
+      loop_control:
+        loop_var: appearance_mode_item
+
+    - name: appearance | accent color
+      osx_defaults:
+        domain: Apple Global Domain
+        key: "{{ accent_color_item }}"
+        state: absent
+      when: accent_color is not defined or accent_color == "Multicolor"
+      with_items:
+        - AppleAccentColor
+        - AppleHighlightColor
+      loop_control:
+        loop_var: accent_color_item
+
+    - name: appearance | highlight color
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleHighlightColor
+        state: absent
+      when: highlight_color is not defined or highlight_color == "Accent"
+
+    - name: appearance | highlight color
+      vars:
+        color_blue: 0.698039 0.843137 1.000000 Blue
+        color_purple: 0.968627 0.831373 1.000000 Purple
+        color_pink: 1.000000 0.749020 0.823529 Pink
+        color_red: 1.000000 0.733333 0.721569 Red
+        color_orange: 1.000000 0.874510 0.701961 Orange
+        color_yellow: 1.000000 0.937255 0.690196 Yellow
+        color_green: 0.752941 0.964706 0.678431 Green
+        color_graphite: 0.847059 0.847059 0.862745 Graphite
+
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleHighlightColor
+        state: present
+        type: string
+        value: "{{ highlight_color_item.value }}"
+      when: highlight_color is defined and highlight_color != "Accent" and highlight_color == highlight_color_item.cond
+      with_items:
+        - { value: "{{ color_blue }}", cond: Blue }
+        - { value: "{{ color_purple }}", cond: Purple }
+        - { value: "{{ color_pink }}", cond: Pink }
+        - { value: "{{ color_red }}", cond: Red }
+        - { value: "{{ color_orange }}", cond: Orange }
+        - { value: "{{ color_yellow }}", cond: Yellow }
+        - { value: "{{ color_green }}", cond: Green }
+        - { value: "{{ color_graphite }}", cond: Graphite }
+      loop_control:
+        loop_var: highlight_color_item
+
+    - name: appearance | sidebar icon size
+      osx_defaults:
+        domain: Apple Global Domain
+        key: NSTableViewDefaultSizeMode
+        state: present
+        type: int
+        value: "{{ side_bar_icon_size_item.value }}"
+      when: sidebar_icon_size is defined and sidebar_icon_size == side_bar_icon_size_item.cond
+      with_items:
+        - { value: 1, cond: Small }
+        - { value: 2, cond: Medium }
+        - { value: 3, cond: Large }
+      loop_control:
+        loop_var: side_bar_icon_size_item
+
+    - name: appearance | wallpaper tinting
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleReduceDesktopTinting
+        state: present
+        type: int
+        value: "{{ wallpaper_tinting_item.value }}"
+      when: wallpaper_tinting is defined and wallpaper_tinting == wallpaper_tinting_item.cond
+      with_items:
+        - { value: 0, cond: Disabled }
+        - { value: 1, cond: Enabled }
+      loop_control:
+        loop_var: wallpaper_tinting_item
+
+    - name: appearance | scrollbar display
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleShowScrollBars
+        state: present
+        type: string
+        value: "{{ scrollbar_display_item.value }}"
+      when: scrollbar_display is defined and scrollbar_display == scrollbar_display_item.cond
+      with_items:
+        - { value: Automatic, cond: Automatic }
+        - { value: WhenScrolling, cond: When scrolling }
+        - { value: Always, cond: Always }
+      loop_control:
+        loop_var: scrollbar_display_item
+
+    - name: appearance | scrollbar behavior
+      osx_defaults:
+        domain: Apple Global Domain
+        key: AppleScrollerPagingBehavior
+        state: present
+        type: int
+        value: "{{ scrollbar_behavior_item.value }}"
+      when: scrollbar_behavior == scrollbar_behavior_item.cond
+      with_items:
+        - { value: 0, cond: Page }
+        - { value: 1, cond: Spot }
+      loop_control:
+        loop_var: scrollbar_behavior_item

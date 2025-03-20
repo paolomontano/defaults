@@ -1,0 +1,35 @@
+---
+#- name: spotlight | search results
+#  osx_defaults:
+#    domain: com.apple.Spotlight
+#    key: orderedItems
+#    type: array
+#    value:
+#      - { "name": APPLICATIONS, "enabled": "{{ spotlight_applications | bool }}" }
+#      - { "name": MENU_EXPRESSION, "enabled": "{{ spotlight_calculator | bool }}" }
+#      - { "name": CONTACT, "enabled": "{{ spotlight_contacts | bool }}" }
+#      - { "name": MENU_CONVERSION, "enabled": "{{ spotlight_conversion | bool }}" }
+#      - { "name": MENU_DEFINITION, "enabled": "{{ spotlight_definition | bool }}" }
+#      - { "name": DOCUMENTS, "enabled": "{{ spotlight_documents | bool }}" }
+#      - { "name": EVENT_TODO, "enabled": "{{ spotlight_events_reminders | bool }}" }
+#      - { "name": DIRECTORIES, "enabled": "{{ spotlight_folders | bool }}" }
+#      - { "name": FONTS, "enabled": "{{ spotlight_fonts | bool }}" }
+#      - { "name": IMAGES, "enabled": "{{ spotlight_images | bool }}" }
+#      - { "name": MESSAGES, "enabled": "{{ spotlight_mail_messages | bool }}" }
+#      - { "name": MOVIES, "enabled": "{{ spotlight_movies | bool }}" }
+#      - { "name": MUSIC, "enabled": "{{ spotlight_music | bool }}" }
+#      - { "name": MENU_OTHER, "enabled": "{{ spotlight_other | bool }}" }
+#      - { "name": PDF, "enabled": "{{ spotlight_pdf_documents | bool }}" }
+#      - { "name": PRESENTATIONS, "enabled": "{{ spotlight_presentations | bool }}" }
+#      - { "name": MENU_SPOTLIGHT_SUGGESTIONS, "enabled": "{{ spotlight_siri_suggestions | bool }}" }
+#      - { "name": SPREADSHEETS, "enabled": "{{ spotlight_spreadsheets | bool }}" }
+#      - { "name": SYSTEM_PREFS, "enabled": "{{ spotlight_system_settings | bool }}" }
+#      - { "name": TIPS, "enabled": "{{ spotlight_tips | bool }}" }
+#      - { "name": BOOKMARKS, "enabled": "{{ spotlight_websites | bool }}" }
+
+- name: spotlight | help apple improve search
+  osx_defaults:
+    domain: com.apple.assistant.support
+    key: Search Queries Data Sharing Status
+    value: "{{ spotlight_improve_search | ternary(1, 2) }}"
+    type: int

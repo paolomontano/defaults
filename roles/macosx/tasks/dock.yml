@@ -1,0 +1,4 @@
+---
+- name: macosx | dock
+  debug:
+    msg: "dock"

@@ -1,0 +1,19 @@
+---
+- name: Configure machine
+  hosts: local
+  gather_facts: yes
+
+  tasks:
+    - name: Check for vars file
+      stat:
+        path: "{{ ansible_hostname }}.yml"
+      register: has_vars
+
+    - name: Include vars
+      include_vars:
+        file: "{{ ansible_hostname }}.yml"
+      when: has_vars.stat.exists
+
+    - name: Set roles
+      include_role:
+        name: "{{ ansible_distribution | lower }}"

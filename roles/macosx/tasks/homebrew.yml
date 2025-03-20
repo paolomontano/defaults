@@ -1,0 +1,17 @@
+---
+- name: homebrew updates
+  homebrew:
+    update_homebrew: true
+    upgrade_all: true
+
+- name: homebrew
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ homebrew_packages }}"
+
+- name: homebrew casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ homebrew_casks }}"
