@@ -110,7 +110,6 @@ homebrew_packages:
   - jq
   - lynx
   - neomutt
-  - tmux
   - vim
   - yt-dlp
 
