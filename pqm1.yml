@@ -95,10 +95,15 @@ spotlight_websites: true
 
 spotlight_improve_search: false
 
+notifications_center_show_previews: when_unlocked
+notifications_center_notifications_when_sleeping: false
+notifications_center_notifications_when_locked: false
+notifications_center_notifications_when_mirrored: false
+notifications_center_notifications_summarize: false
+
 homebrew_packages:
   - bottom
   - colordiff
-  - docker
   - docker-compose
   - dockutil
   - fish
@@ -119,8 +124,10 @@ homebrew_casks:
   - caffeine
   - chatgpt
   - discord
+  - docker
   - ghostty
   - jetbrains-toolbox
+  - megasync
   - mullvad-browser
   - notion
   - raycast

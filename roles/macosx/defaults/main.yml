@@ -98,5 +98,11 @@ spotlight_websites: true
 
 spotlight_improve_search: true
 
+notifications_center_show_previews: when_unlocked
+notifications_center_notifications_when_sleeping: false
+notifications_center_notifications_when_locked: true
+notifications_center_notifications_when_mirrored: false
+notifications_center_notifications_summarize: false
+
 homebrew_packages:
 homebrew_casks:

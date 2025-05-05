@@ -1,4 +1,6 @@
 ---
+- name: homebrew
+  include_tasks: homebrew.yml
 
 - name: dockutil
   include_tasks: dock.yml
