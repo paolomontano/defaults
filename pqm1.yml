@@ -102,6 +102,7 @@ notifications_center_notifications_when_mirrored: false
 notifications_center_notifications_summarize: false
 
 homebrew_packages:
+  - ansible
   - bottom
   - colordiff
   - docker-compose
