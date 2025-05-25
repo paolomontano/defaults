@@ -116,24 +116,23 @@ homebrew_packages:
   - lynx
   - neomutt
   - vim
-  - yt-dlp
 
 homebrew_casks:
   - 1password
   - 1password-cli
+  - bitwarden
+  - bitwarden-cli
+  - brave-browser
   - caffeine
   - chatgpt
-  - discord
+  - clockify
   - docker
+  - firefox
   - ghostty
+  - google-chrome
   - jetbrains-toolbox
-  - megasync
-  - mullvad-browser
   - notion
   - raycast
-  - signal
   - slack
   - spotify
   - sublime-text
-  - telegram
-  - whatsapp

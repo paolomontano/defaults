@@ -46,3 +46,25 @@
     - { key: NowPlaying, type: int, cond: "{{ control_center_now_playing }}" }
   loop_control:
     loop_var: visibility_currenthost_item
+
+#- name: control center | other modules
+#  osx_defaults:
+#    domain: com.apple.controlcenter
+#
+#  with_items:
+#    - { key: null, type: null, cond: "{{ control_center_other_modules_accessibility_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_accessibility_control_center }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_battery_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_battery_control_center }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_battery_percentage }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_battery_energy_mode }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_music_recognition_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_music_recognition_control_center }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_hearing_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_hearing_control_center }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_user_switch_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_user_switch_control_center }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_keyboard_brightness_menu_bar }}" |
+#    - { key: null, type: null, cond: "{{ ontrol_center_other_modules_keyboard_brightness_control_center }}" |
+#  loop_control:
+#    loop_var: control_center_other_modules
