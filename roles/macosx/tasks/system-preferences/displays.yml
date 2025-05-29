@@ -1,0 +1,17 @@
+---
+- name: Check if displayplacer is installed
+  command: which displayplacer
+  register: displayplacer_check
+  changed_when: false
+  ignore_errors: yes
+
+- name: set resolution
+  command: >
+    displayplacer 'id:{{ display_id }}
+    res:{{ display_resolution }}
+    hz:{{ display_refresh_rate }}
+    color_depth:{{ display_color_depth }}
+    scaling:{{ display_scaling }}
+    origin:{{ display_origin }}
+    degree:{{ display_rotation }}'
+  when: displayplacer_check.rc == 0
