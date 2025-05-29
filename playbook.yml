@@ -4,7 +4,7 @@
   gather_facts: yes
 
   tasks:
-    - name: Check for vars file
+    - name: Check for vars file by hostname
       stat:
         path: "{{ ansible_hostname }}.yml"
       register: has_vars

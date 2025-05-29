@@ -101,11 +101,20 @@ notifications_center_notifications_when_locked: false
 notifications_center_notifications_when_mirrored: false
 notifications_center_notifications_summarize: false
 
+display_resolution: "2056x1329"
+display_id: "1"
+display_refresh_rate: "120"
+display_color_depth: "8"
+display_scaling: "on"
+display_origin: "(0,0)"
+display_rotation: "0"
+
 homebrew_packages:
   - ansible
   - bitwarden-cli
   - bottom
   - colordiff
+  - displayplacer
   - docker-compose
   - dockutil
   - fish

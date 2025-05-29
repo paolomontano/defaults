@@ -7,12 +7,12 @@
     - control-center.yml
     - desktop-dock.yml
     - spotlight.yml
-    - notifications.yml
+    #- notifications.yml
     #- battery.yml
     #- general.yml
     #- accessibility.yml
     #- apple-intelligence-siri.yml
-    #- displays.yml
+    - displays.yml
 
     #- screen-saver.yml
     #- wallpaper.yml
