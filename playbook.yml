@@ -4,6 +4,16 @@
   gather_facts: yes
 
   tasks:
+    - name: Check for vars file by distribution
+      stat:
+        path: "{{ ansible_distribution | lower}}.yml"
+      register: has_os_vars
+
+    - name: Include OS vars
+      include_vars:
+        file: "{{ ansible_distribution | lower}}.yml"
+      when: has_os_vars.stat.exists
+
     - name: Check for vars file by hostname
       stat:
         path: "{{ ansible_hostname }}.yml"

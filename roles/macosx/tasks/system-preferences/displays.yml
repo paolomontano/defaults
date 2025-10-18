@@ -7,11 +7,14 @@
 
 - name: set resolution
   command: >
-    displayplacer 'id:{{ display_id }}
-    res:{{ display_resolution }}
-    hz:{{ display_refresh_rate }}
-    color_depth:{{ display_color_depth }}
-    scaling:{{ display_scaling }}
-    origin:{{ display_origin }}
-    degree:{{ display_rotation }}'
+    displayplacer 'id:{{ displayplacer_item.context_id }}
+    res:{{ displayplacer_item.resolution }}
+    hz:{{ displayplacer_item.refresh_rate }}
+    color_depth:{{ displayplacer_item.color_depth }}
+    scaling:{{ displayplacer_item.scaling }}
+    origin:{{ displayplacer_item.origin }}
+    degree:{{ displayplacer_item.rotation }}'
   when: displayplacer_check.rc == 0
+  loop: "{{ displays }}"
+  loop_control:
+    loop_var: displayplacer_item

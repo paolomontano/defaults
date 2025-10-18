@@ -1,0 +1,111 @@
+enable_wifi: 1
+
+appearance_mode: Auto
+accent_color: Multicolor
+highlight_color: Accent
+sidebar_icon_size: Small
+wallpaper_tinting: Disabled
+scrollbar_display: Always
+scrollbar_behavior: Spot
+
+control_center_wifi: Show
+control_center_bluetooth: Hide
+control_center_airdrop: Hide
+control_center_focus: Hide
+control_center_stage_manager: Hide
+control_center_screen_mirroring: Hide
+control_center_display_display: Hide
+control_center_sound: Hide
+control_center_now_playing: Hide
+
+control_center_other_modules_accessibility_menu_bar: Hide
+control_center_other_modules_accessibility_control_center: Hide
+control_center_other_modules_battery_menu_bar: Show
+control_center_other_modules_battery_control_center: Hide
+control_center_other_modules_battery_percentage: Show
+control_center_other_modules_battery_energy_mode: Active
+control_center_other_modules_music_recognition_menu_bar: Hide
+control_center_other_modules_music_recognition_control_center: Hide
+control_center_other_modules_hearing_menu_bar: Hide
+control_center_other_modules_hearing_control_center: Hide
+control_center_other_modules_user_switch_menu_bar: Hide
+control_center_other_modules_user_switch_control_center: Hide
+control_center_other_modules_keyboard_brightness_menu_bar: Hide
+control_center_other_modules_keyboard_brightness_control_center: Hide
+
+desktop_dock_size: 32
+desktop_dock_magnification: 64
+desktop_dock_position: Left
+desktop_dock_minimize_effect: Genie
+desktop_dock_double_click_title: Maximize
+desktop_dock_minimize_to_app_icon: true
+desktop_dock_auto_hide_dock: true
+desktop_dock_animate_opening_app: true
+desktop_dock_show_indicators_app: true
+desktop_dock_show_suggested: false
+
+desktop_stage_manager_show_items_desktop: false
+desktop_stage_manager_show_items_stage_manager: false
+desktop_stage_manager_click_wallpaper_to_reveal: false
+
+stage_manager_enabled: false
+stage_manager_show_recent_apps: true
+stage_manager_show_windows_from_app: true
+
+widgets_hide_desktop: true
+widgets_hide_stage_manager: true
+widgets_style: Automatic
+widgets_use_iphone: true
+
+windows_prefer_tabs: Fullscreen
+windows_ask_to_keep_changes_when_closing_docs: false
+windows_close_windows_when_quitting_app: true
+windows_drag_to_edge_tile: true
+windows_drag_to_menubar_fullscreen: true
+windows_option_key_to_tile: true
+windows_tiled_window_margins: true
+
+mission_control_rearrange_spaces: false
+mission_control_switch_app_to_open_space: true
+mission_control_group_by_application: false
+mission_control_displays_have_different_spaces: true
+mission_control_drag_windows_to_top_for_mission_control: true
+
+spotlight_applications: true
+spotlight_calculator: true
+spotlight_contacts: true
+spotlight_conversion: true
+spotlight_definition: true
+spotlight_documents: true
+spotlight_events_reminders: true
+spotlight_folders: true
+spotlight_fonts: true
+spotlight_images: true
+spotlight_mail_messages: true
+spotlight_movies: true
+spotlight_music: true
+spotlight_other: true
+spotlight_pdf_documents: true
+spotlight_presentations: true
+spotlight_siri_suggestions: true
+spotlight_spreadsheets: true
+spotlight_system_settings: true
+spotlight_tips: false
+spotlight_websites: true
+
+spotlight_improve_search: false
+
+notifications_center_show_previews: when_unlocked
+notifications_center_notifications_when_sleeping: false
+notifications_center_notifications_when_locked: false
+notifications_center_notifications_when_mirrored: false
+notifications_center_notifications_summarize: false
+
+displays:
+  - context_id: "1"
+    resolution: "2056x1329"
+    refresh_rate: "120"
+    color_depth: "8"
+    scaling: "on"
+    origin: "(0,0)"
+    rotation: "0"

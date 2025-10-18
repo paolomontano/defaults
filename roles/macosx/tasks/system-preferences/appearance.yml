@@ -12,14 +12,15 @@
       osx_defaults:
         domain: Apple Global Domain
         key: "{{ appearance_mode_item.key }}"
-        state: present
+        state: "{{ appearance_mode_item.state }}"
         type: "{{ appearance_mode_item.type }}"
         value: "{{ appearance_mode_item.value }}"
-      when: appearance_mode is defined and appearance_mode != "Light" and appearance_mode == appearance_mode_item.cond
+      when: appearance_mode is defined and appearance_mode == appearance_mode_item.cond
       with_items:
-        - { key: AppleInterfaceStyle, type: string, value: Dark, cond: Dark }
-        - { key: AppleInterfaceStyle, type: string, value: Dark, cond: Auto }
-        - { key: AppleInterfaceStyleSwitchesAutomatically, type: int, value: 1, cond: Auto }
+        - { key: AppleInterfaceStyle, state: absent, type: string, value: null, cond: Light }
+        - { key: AppleInterfaceStyle, state: present, type: string, value: Dark, cond: Dark }
+        - { key: AppleInterfaceStyle, state: absent, type: string, value: null, cond: Auto }
+        - { key: AppleInterfaceStyleSwitchesAutomatically, state: present, type: int, value: 1, cond: Auto }
       loop_control:
         loop_var: appearance_mode_item
 

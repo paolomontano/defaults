@@ -1,0 +1,28 @@
+---
+- name: Ensure fish is default shell for current user
+  vars:
+    target_user: "{{ lookup('env','USER') }}"
+
+  block:
+    - name: Detect fish path
+      ansible.builtin.command: which fish
+      register: fish_cmd
+      changed_when: false
+      failed_when: fish_cmd.rc != 0
+
+    - name: Ensure fish is listed in /etc/shells
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/shells
+        line: "{{ fish_cmd.stdout }}"
+        state: present
+
+    - name: Check current login shell
+      ansible.builtin.command: dscl . -read /Users/{{ target_user }} UserShell
+      register: shell_info
+      changed_when: false
+
+    - name: Change default shell to fish if not already set
+      become: true
+      ansible.builtin.command: chsh -s {{ fish_cmd.stdout }} {{ target_user }}
+      when: shell_info.stdout is not search(fish_cmd.stdout)

@@ -5,6 +5,11 @@
 - name: dockutil
   include_tasks: dock.yml
 
+- name: shell configuration
+  import_tasks: shells.yml
 
 - name: preferences
   import_tasks: prefs.yml
+
+- name: ghostty config
+  import_tasks: terminal.yml
