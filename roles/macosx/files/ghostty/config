@@ -1,0 +1,19 @@
+# Font
+font-family = "FiraCode Nerd Font"
+font-size = 13
+
+# Shell
+# shell = "/opt/homebrew/bin/fish --login"
+
+# Window
+window-decoration = true
+window-save-state = always
+
+# macOS settings
+macos-option-as-alt = true
+
+# Scrollback
+scrollback-limit = 10000
+
+# Appearance (light/dark auto-switch using themes directory)
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
