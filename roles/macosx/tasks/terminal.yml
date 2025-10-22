@@ -1,0 +1,44 @@
+---
+- name: ghostty vars
+  vars:
+    repo_url: "https://github.com/catppuccin/ghostty.git"
+    xdg_config_home: "{{ lookup('env','XDG_CONFIG_HOME') | default(ansible_env.HOME + '/.config', true) }}"
+    ghostty_config_dir: "{{ xdg_config_home }}/ghostty"
+    ghostty_themes_dir: "{{ ghostty_config_dir }}/themes"
+    repo_checkout_dir: "{{ ansible_env.HOME }}/.cache/catppuccin-ghostty"
+    fish_config_dir: "{{ xdg_config_home }}/fish"
+
+  block:
+    - name: Ensure Ghostty themes dir exists
+      file:
+        path: "{{ ghostty_themes_dir }}"
+        state: directory
+        mode: "755"
+
+    - name: Clone Catppuccin Ghostty repo (shallow)
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ repo_checkout_dir }}"
+        version: "main"
+        depth: 1
+        update: yes
+
+    - name: Copy Catppuccin themes into ~/.config/ghostty/themes
+      copy:
+        src: "{{ repo_checkout_dir }}/themes/"
+        dest: "{{ ghostty_themes_dir }}/"
+        remote_src: true
+        mode: "755"
+        directory_mode: "755"
+
+    - name: Copy Ghostty config from roles/macosx/files/ghostty/config
+      copy:
+        src: "roles/macosx/files/ghostty/config"
+        dest: "{{ ghostty_config_dir }}/config"
+        mode: "0644"
+
+    - name: Copy Fish config from roles/macosx/files/fish/config.fish
+      copy:
+        src: "roles/macosx/files/fish/config.fish"
+        dest: "{{ fish_config_dir }}/config.fish"
+        mode: "0644"
