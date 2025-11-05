@@ -7,13 +7,33 @@
     ghostty_themes_dir: "{{ ghostty_config_dir }}/themes"
     repo_checkout_dir: "{{ ansible_env.HOME }}/.cache/catppuccin-ghostty"
     fish_config_dir: "{{ xdg_config_home }}/fish"
+    starship_config_dir: "{{ xdg_config_home}}/starship"
 
   block:
+    - name: Ensure Ghostty config dir exists
+      file:
+        path: "{{ ghostty_config_dir }}"
+        state: directory
+        mode: "755"
+
     - name: Ensure Ghostty themes dir exists
       file:
         path: "{{ ghostty_themes_dir }}"
         state: directory
         mode: "755"
+
+    - name: Ensure Fish config  dir exists
+      file:
+        path: "{{ fish_config_dir }}"
+        state: directory
+        mode: "755"
+
+    - name: Ensure dir starship config dir exists
+      file:
+        path: "{{ starship_config_dir }}"
+        state: directory
+        mode: "755"
+
 
     - name: Clone Catppuccin Ghostty repo (shallow)
       git:
@@ -41,4 +61,10 @@
       copy:
         src: "roles/macosx/files/fish/config.fish"
         dest: "{{ fish_config_dir }}/config.fish"
+        mode: "0644"
+
+    - name: Copy Starship config
+      copy:
+        src: "roles/macosx/files/starship/starship.toml"
+        dest: "{{ starship_config_dir }}/starship.toml"
         mode: "0644"

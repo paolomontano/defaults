@@ -13,12 +13,15 @@ homebrew_packages:
   - font-fira-code-nerd-font
   - font-jetbrains-mono-nerd-font
   - font-hack-nerd-font
+  - fzf
   - git
   - jq
   - lynx
   - neomutt
+  - starship
   - vim
   - yt-dlp
+  - zoxide
 
 homebrew_casks:
   - 1password
@@ -33,6 +36,7 @@ homebrew_casks:
   - libreoffice
   - megasync
   - mullvad-browser
+  - nikitabobko/tap/aerospace
   - notion
   - nx-studio
   - raycast
