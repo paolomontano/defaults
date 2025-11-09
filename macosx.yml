@@ -67,7 +67,7 @@ windows_tiled_window_margins: true
 
 mission_control_rearrange_spaces: false
 mission_control_switch_app_to_open_space: true
-mission_control_group_by_application: false
+mission_control_group_by_application: true
 mission_control_displays_have_different_spaces: true
 mission_control_drag_windows_to_top_for_mission_control: true
 
