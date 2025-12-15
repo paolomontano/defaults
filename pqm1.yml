@@ -4,6 +4,7 @@ homebrew_packages:
   - clamav
   - colordiff
   - composer
+  - coreutils
   - displayplacer
   - docker
   - docker-compose
@@ -18,11 +19,13 @@ homebrew_packages:
   - jq
   - lynx
   - neomutt
+  - rustup
   - starship
+  - tmux
   - vim
   - yt-dlp
-  - zoxide
   - z
+  - zoxide
 
 homebrew_casks:
   - 1password
@@ -36,7 +39,6 @@ homebrew_casks:
   - jetbrains-toolbox
   - libreoffice
   - megasync
-  - mullvad-browser
   - nikitabobko/tap/aerospace
   - notion
   - nx-studio

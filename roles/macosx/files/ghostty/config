@@ -1,6 +1,6 @@
 # Font
 font-family = "FiraCode Nerd Font"
-font-size = 13
+font-size = 16
 
 # Shell
 # shell = "/opt/homebrew/bin/fish --login"

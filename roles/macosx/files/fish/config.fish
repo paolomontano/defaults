@@ -2,6 +2,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Added by Toolbox App
 export PATH="$PATH:/Users/paolo/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/Users/paolo/.config/composer/vendor/bin"
+export PATH="$PATH:./vendor/bin"
+export PATH="$PATH:/Users/paolo/.local/bin/larasaur"
+export PATH="$PATH:$(brew --prefix rustup)/bin"
+
 export XDG_CACHE_HOME="/Users/paolo/.cache"
 export XDG_CONFIG_HOME="/Users/paolo/.config"
 export STARSHIP_CONFIG="/Users/paolo/.config/starship/starship.toml"

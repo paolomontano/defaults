@@ -11,9 +11,16 @@ homebrew_packages:
   - font-fira-code-nerd-font
   - font-jetbrains-mono-nerd-font
   - font-hack-nerd-font
+  - fzf
   - git
   - jq
+  - lynx
+  - neomutt
+  - starship
+  - tmux
   - vim
+  - z
+  - zoxide
 
 homebrew_casks:
   - 1password
@@ -23,11 +30,13 @@ homebrew_casks:
   - caffeine
   - chatgpt
   - clockify
+  - cursor
   - docker
   - firefox
   - ghostty
   - google-chrome
   - jetbrains-toolbox
+  - nikitabobko/tap/aerospace
   - notion
   - raycast
   - slack

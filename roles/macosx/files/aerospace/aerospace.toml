@@ -76,7 +76,7 @@ automatically-unhide-macos-hidden-apps = false
     # '''
 
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-    cmd-enter = 'exec-and-forget open -a Ghostty'
+    cmd-enter = ['exec-and-forget open -a Ghostty', 'workspace cmd']
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-t = 'layout tiles horizontal vertical'
@@ -101,6 +101,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    ctrl-backtick = 'workspace cmd'
     ctrl-1 = 'workspace 1'
     ctrl-2 = 'workspace 2'
     ctrl-3 = 'workspace 3'
@@ -113,6 +114,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-0 = 'workspace 10'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    ctrl-shift-backtick = 'move-node-to-workspace cmd'
     ctrl-shift-1 = 'move-node-to-workspace 1'
     ctrl-shift-2 = 'move-node-to-workspace 2'
     ctrl-shift-3 = 'move-node-to-workspace 3'
@@ -149,7 +151,8 @@ automatically-unhide-macos-hidden-apps = false
 
 # Ghosty workaround
 [[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
+if.app-id='com.mitchellh.ghostty'
 run= [
-    "layout floating",
+    'layout floating',
+    'move-node-to-workspace cmd',
 ]
