@@ -1,5 +1,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+set -g fish_greeting
+
 # Added by Toolbox App
 export PATH="$PATH:/Users/paolo/Library/Application Support/JetBrains/Toolbox/scripts"
 export PATH="$PATH:/Users/paolo/.config/composer/vendor/bin"
