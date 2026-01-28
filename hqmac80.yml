@@ -13,6 +13,7 @@ homebrew_packages:
   - font-hack-nerd-font
   - fzf
   - git
+  - inetutils
   - jq
   - lynx
   - neomutt
