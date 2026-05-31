@@ -20,7 +20,6 @@ homebrew_packages:
   - jq
   - lynx
   - neomutt
-  - rustup
   - starship
   - tmux
   - vim
@@ -33,6 +32,9 @@ homebrew_casks:
   - 1password-cli
   - caffeine
   - chatgpt
+  - codex
+  - cursor
+  - cursor-cli
   - discord
   - docker
   - firefox
@@ -42,11 +44,6 @@ homebrew_casks:
   - megasync
   - nikitabobko/tap/aerospace
   - notion
-  - nx-studio
+  - obsidian
   - raycast
-  - signal
-  - slack
-  - spotify
   - sublime-text
-  - telegram
-  - whatsapp

@@ -30,6 +30,7 @@ homebrew_casks:
   - brave-browser
   - caffeine
   - chatgpt
+  - codex
   - clockify
   - cursor
   - docker
