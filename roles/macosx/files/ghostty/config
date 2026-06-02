@@ -13,7 +13,11 @@ window-save-state = always
 macos-option-as-alt = true
 
 # Scrollback
-scrollback-limit = 10000
+scrollback-limit = 268435456
+
+# Interaction
+mouse-hide-while-typing = true
+selection-clear-on-copy = true
 
 # Appearance (light/dark auto-switch using themes directory)
 theme = light:Catppuccin Latte,dark:Catppuccin Mocha

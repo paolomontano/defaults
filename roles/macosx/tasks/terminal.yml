@@ -9,6 +9,8 @@
     fish_config_dir: "{{ xdg_config_home }}/fish"
     starship_config_dir: "{{ xdg_config_home }}/starship"
     aerospace_config_dir: "{{ xdg_config_home }}/aerospace"
+    tmux_config_dir: "{{ xdg_config_home }}/tmux"
+    tmux_plugins_dir: "{{ tmux_config_dir }}/plugins"
 
   block:
     - name: Ensure Ghostty config dir exists
@@ -32,6 +34,24 @@
     - name: Ensure starship config dir exists
       file:
         path: "{{ starship_config_dir }}"
+        state: directory
+        mode: "755"
+
+    - name: Ensure Neovim config dir exists
+      file:
+        path: "{{ xdg_config_home }}/nvim"
+        state: directory
+        mode: "755"
+
+    - name: Ensure tmux config dir exists
+      file:
+        path: "{{ tmux_config_dir }}"
+        state: directory
+        mode: "755"
+
+    - name: Ensure tmux plugins dir exists
+      file:
+        path: "{{ tmux_plugins_dir }}"
         state: directory
         mode: "755"
 
@@ -68,6 +88,41 @@
         src: "roles/macosx/files/starship/starship.toml"
         dest: "{{ starship_config_dir }}/starship.toml"
         mode: "0644"
+
+    - name: Copy Neovim config
+      copy:
+        src: "roles/macosx/files/nvim/init.vim"
+        dest: "{{ xdg_config_home }}/nvim/init.vim"
+        mode: "0644"
+
+    - name: Copy tmux config
+      copy:
+        src: "roles/macosx/files/tmux/tmux.conf"
+        dest: "{{ tmux_config_dir }}/tmux.conf"
+        mode: "0644"
+
+    - name: Link tmux legacy config path
+      file:
+        src: "{{ tmux_config_dir }}/tmux.conf"
+        dest: "{{ ansible_env.HOME }}/.tmux.conf"
+        state: link
+        force: true
+
+    - name: Clone tmux plugin manager
+      git:
+        repo: "https://github.com/tmux-plugins/tpm.git"
+        dest: "{{ tmux_plugins_dir }}/tpm"
+        version: "master"
+        depth: 1
+        update: yes
+
+    - name: Clone Catppuccin tmux plugin
+      git:
+        repo: "https://github.com/catppuccin/tmux.git"
+        dest: "{{ tmux_plugins_dir }}/tmux"
+        version: "main"
+        depth: 1
+        update: yes
 
     - name: Ensure AeroSpace config dir exists
       file:

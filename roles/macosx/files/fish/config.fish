@@ -11,7 +11,8 @@ export PATH="$PATH:$(brew --prefix rustup)/bin"
 
 export XDG_CACHE_HOME="/Users/paolo/.cache"
 export XDG_CONFIG_HOME="/Users/paolo/.config"
-export STARSHIP_CONFIG="/Users/paolo/.config/starship/starship.toml"
+
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 starship init fish | source
 zoxide init fish | source
